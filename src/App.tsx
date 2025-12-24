@@ -390,12 +390,14 @@ export default function App() {
     const audio = new Audio("/music.mp3");
     audio.loop = true;
     audio.preload = "auto";
+    audio.volume = 0.4; // 40% do volume (ajuste se necessário)
     backgroundAudioRef.current = audio;
     return () => {
       audio.pause();
       backgroundAudioRef.current = null;
     };
   }, []);
+
 
   const playBackgroundMusic = useCallback(() => {
     const audio = backgroundAudioRef.current;
@@ -534,10 +536,18 @@ export default function App() {
 
   return (
     <div className="App">
+      {/* Botão de início kawaii */}
+      {!hasStarted && (
+        <div className="start-button-container">
+          <button className="start-button" onClick={handleInteraction}>
+            Abrir Presente ✨
+          </button>
+          <span className="start-hint">toque para começar ♡</span>
+        </div>
+      )}
       <div
         className="background-overlay"
-        style={{ opacity: backgroundOpacity, cursor: 'pointer' }}
-        onClick={handleInteraction}
+        style={{ opacity: backgroundOpacity }}
       >
         <div className="typed-text">
           {typedLines.map((line, index) => {
