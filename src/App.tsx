@@ -77,13 +77,15 @@ const BACKGROUND_FADE_START = Math.max(
 );
 
 const TYPED_LINES = [
-  "> tina",
+  "> Esther ♡",
   "...",
-  "> today is your birthday",
+  "> hoje é o seu aniversário!",
   "...",
-  "> so i made you this computer program",
+  "> então eu fiz esse programa pra você",
   "...",
-  "٩(◕‿◕)۶ ٩(◕‿◕)۶ ٩(◕‿◕)۶"
+  "> com muito amor e carinho ♡",
+  "...",
+  "(♡˙︶˙♡) Hello Kitty Mode Activated! (♡˙︶˙♡)"
 ];
 const TYPED_CHAR_DELAY = 100;
 const POST_TYPING_SCENE_DELAY = 1000;
@@ -101,7 +103,7 @@ const BIRTHDAY_CARDS: ReadonlyArray<BirthdayCardConfig> = [
     id: "confetti",
     image: "/card.png",
     position: [1, 0.081, -2],
-    rotation: [-Math.PI / 2 , 0, Math.PI / 3],
+    rotation: [-Math.PI / 2, 0, Math.PI / 3],
   }
 ];
 
@@ -539,7 +541,7 @@ export default function App() {
         </div>
       </div>
       {hasAnimationCompleted && isCandleLit && (
-        <div className="hint-overlay">press space to blow out the candle</div>
+        <div className="hint-overlay">pressione espaço para apagar a velinha ♡</div>
       )}
       <Canvas
         gl={{ alpha: true }}
@@ -560,14 +562,14 @@ export default function App() {
             onToggleCard={handleCardToggle}
           />
           <ambientLight intensity={(1 - environmentProgress) * 0.8} />
-          <directionalLight intensity={0.5} position={[2, 10, 0]} color={[1, 0.9, 0.95]}/>
+          <directionalLight intensity={0.5} position={[2, 10, 0]} color={[1, 0.9, 0.95]} />
           <Environment
-            files={["/shanghai_bund_4k.hdr"]}
-            backgroundRotation={[0, 3.3, 0]}
-            environmentRotation={[0, 3.3, 0]}
+            files={["/autumn_park_4k.hdr"]}
+            backgroundRotation={[0, 2.5, 0]}
+            environmentRotation={[0, 2.5, 0]}
             background
-            environmentIntensity={0.1 * environmentProgress}
-            backgroundIntensity={0.05 * environmentProgress}
+            environmentIntensity={0.5 * environmentProgress}
+            backgroundIntensity={0.35 * environmentProgress}
           />
           <EnvironmentBackgroundController intensity={0.05 * environmentProgress} />
           <Fireworks isActive={fireworksActive} origin={[0, 10, 0]} />
