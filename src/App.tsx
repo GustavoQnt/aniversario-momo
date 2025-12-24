@@ -513,6 +513,19 @@ export default function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [hasStarted, hasAnimationCompleted, isCandleLit, playBackgroundMusic]);
 
+  // Handler para toque/clique (mobile support)
+  const handleInteraction = useCallback(() => {
+    if (!hasStarted) {
+      playBackgroundMusic();
+      setHasStarted(true);
+      return;
+    }
+    if (hasAnimationCompleted && isCandleLit) {
+      setIsCandleLit(false);
+      setFireworksActive(true);
+    }
+  }, [hasStarted, hasAnimationCompleted, isCandleLit, playBackgroundMusic]);
+
   const handleCardToggle = useCallback((id: string) => {
     setActiveCardId((current) => (current === id ? null : id));
   }, []);
@@ -523,7 +536,8 @@ export default function App() {
     <div className="App">
       <div
         className="background-overlay"
-        style={{ opacity: backgroundOpacity }}
+        style={{ opacity: backgroundOpacity, cursor: 'pointer' }}
+        onClick={handleInteraction}
       >
         <div className="typed-text">
           {typedLines.map((line, index) => {
@@ -545,7 +559,9 @@ export default function App() {
         </div>
       </div>
       {hasAnimationCompleted && isCandleLit && (
-        <div className="hint-overlay">pressione espaço para apagar a velinha ♡</div>
+        <div className="hint-overlay" onClick={handleInteraction} style={{ cursor: 'pointer' }}>
+          toque na tela para apagar a velinha ♡
+        </div>
       )}
       <CardOverlay
         isVisible={activeCardId === "confetti"}
