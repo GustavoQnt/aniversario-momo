@@ -17,6 +17,8 @@ import { Table } from "./models/table";
 import { PictureFrame } from "./models/pictureFrame";
 import { Fireworks } from "./components/Fireworks";
 import { BirthdayCard } from "./components/BirthdayCard";
+import { CardOverlay } from "./components/CardOverlay";
+import { Cockatiel } from "./models/cockatiel";
 
 import "./App.css";
 
@@ -77,15 +79,15 @@ const BACKGROUND_FADE_START = Math.max(
 );
 
 const TYPED_LINES = [
-  "> Esther ♡",
-  "...",
-  "> hoje é o seu aniversário!",
-  "...",
-  "> então eu fiz esse programa pra você",
-  "...",
-  "> com muito amor e carinho ♡",
-  "...",
-  "(♡˙︶˙♡) Hello Kitty Mode Activated! (♡˙︶˙♡)"
+  "✿ Oii meu amorzinho ✿",
+  "♡",
+  "｡･:*:･ﾟ★ hoje é seu dia especial! ★ﾟ･:*:･｡",
+  "♡",
+  "então fiz esse presentinho",
+  "♡",
+  "com todo carinho do mundo pra você~",
+  "♡",
+  "⊂(♡ᴥ♡)⊃ te amo muito! ⊂(♡ᴥ♡)⊃",
 ];
 const TYPED_CHAR_DELAY = 100;
 const POST_TYPING_SCENE_DELAY = 1000;
@@ -302,6 +304,8 @@ function AnimatedScene({
             onToggle={onToggleCard}
           />
         ))}
+        {/* Calopsita fofa! */}
+        <Cockatiel position={[1.1, 0.4, 1.04]} scale={1.8} rotation={[0.2, Math.PI * 0.60, -0.3]} />
       </group>
       <group ref={cakeGroup}>
         <Cake />
@@ -543,6 +547,10 @@ export default function App() {
       {hasAnimationCompleted && isCandleLit && (
         <div className="hint-overlay">pressione espaço para apagar a velinha ♡</div>
       )}
+      <CardOverlay
+        isVisible={activeCardId === "confetti"}
+        onClose={() => setActiveCardId(null)}
+      />
       <Canvas
         gl={{ alpha: true }}
         style={{ background: "transparent" }}

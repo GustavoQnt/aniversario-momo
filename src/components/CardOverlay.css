@@ -1,0 +1,274 @@
+.card-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.card-overlay {
+  position: relative;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(145deg,
+      #fff0f5 0%,
+      #ffe4ec 25%,
+      #fff5f8 50%,
+      #ffe8f0 75%,
+      #fff0f5 100%);
+  border-radius: 30px;
+  border: 4px solid rgba(255, 105, 180, 0.5);
+  box-shadow:
+    0 0 40px rgba(255, 105, 180, 0.4),
+    0 0 80px rgba(255, 192, 203, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    inset 0 2px 20px rgba(255, 255, 255, 0.8);
+  padding: 2.5rem 2rem;
+  animation: cardAppear 0.4s ease-out;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.card-overlay::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-overlay::-webkit-scrollbar-track {
+  background: rgba(255, 182, 193, 0.2);
+  border-radius: 4px;
+}
+
+.card-overlay::-webkit-scrollbar-thumb {
+  background: rgba(255, 105, 180, 0.5);
+  border-radius: 4px;
+}
+
+.card-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(255, 105, 180, 0.2);
+  border-radius: 50%;
+  color: #d63384;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-close-btn:hover {
+  background: rgba(255, 105, 180, 0.4);
+  transform: scale(1.1);
+}
+
+.card-decoration {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.card-decoration.top-left {
+  top: 0.5rem;
+  left: 0.5rem;
+  animation-delay: 0s;
+}
+
+.card-decoration.top-right {
+  top: 0.5rem;
+  right: 3rem;
+  animation-delay: 0.5s;
+}
+
+.card-decoration.bottom-left {
+  bottom: 0.5rem;
+  left: 0.5rem;
+  animation-delay: 1s;
+}
+
+.card-decoration.bottom-right {
+  bottom: 0.5rem;
+  right: 0.5rem;
+  animation-delay: 1.5s;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+.card-content {
+  padding: 1rem 0.5rem;
+}
+
+.card-greeting {
+  font-family: 'Georgia', 'Palatino', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #c41e7e;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(255, 105, 180, 0.2);
+}
+
+.card-paragraph {
+  font-family: 'Georgia', 'Palatino', serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #6b3a5c;
+  text-align: justify;
+  margin-bottom: 1.2rem;
+  text-indent: 1.5rem;
+}
+
+.card-paragraph.highlight {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #c41e7e;
+  text-indent: 0;
+  margin-top: 1.5rem;
+  text-shadow: 0 1px 3px rgba(255, 105, 180, 0.3);
+}
+
+.card-signature {
+  margin-top: 2rem;
+  text-align: right;
+  font-family: 'Georgia', 'Palatino', serif;
+  font-style: italic;
+  color: #8b4573;
+}
+
+.card-signature p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+}
+
+.signature-kiss {
+  font-size: 1.1rem;
+  color: #c41e7e;
+}
+
+.signature-love {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-style: normal;
+  color: #d63384;
+  margin-top: 1rem !important;
+  text-shadow: 0 2px 8px rgba(255, 105, 180, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.card-hearts {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  color: #ff69b4;
+}
+
+.card-hearts span {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.card-hearts span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.card-hearts span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.card-hearts span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .card-overlay {
+    padding: 2rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 20px;
+  }
+
+  .card-greeting {
+    font-size: 1.5rem;
+  }
+
+  .card-paragraph {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .card-decoration {
+    font-size: 1.5rem;
+  }
+
+  .signature-love {
+    font-size: 1.2rem;
+  }
+}
